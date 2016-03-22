@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "jhipsterVersion": "2.27.0",
+    "baseName": "msapp2",
+    "packageName": "com.mycompany.myapp",
+    "packageFolder": "com/mycompany/myapp",
+    "serverPort": "8082",
+    "authenticationType": "jwt",
+    "hibernateCache": "no",
+    "databaseType": "cassandra",
+    "devDatabaseType": "cassandra",
+    "prodDatabaseType": "cassandra",
+    "searchEngine": "no",
+    "buildTool": "gradle",
+    "jwtSecretKey": "5a22533a95cb657fa10eb7dcf71ad5c03fa88ec5",
+    "enableTranslation": true,
+    "applicationType": "microservice",
+    "testFrameworks": [
+      "gatling",
+      "cucumber"
+    ],
+    "skipClient": true,
+    "skipUserManagement": true,
+    "nativeLanguage": "nl",
+    "languages": [
+      "nl",
+      "zh-tw",
+      "da",
+      "fr",
+      "es",
+      "ta"
+    ],
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "enableSocialSignIn": false
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "departmentId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "departmentName",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160322111228",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "entityTableName": "Department3"
+}

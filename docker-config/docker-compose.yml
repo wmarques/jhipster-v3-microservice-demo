@@ -1,0 +1,98 @@
+version: '2'
+services:
+    gateway-app:
+        image: gateway
+        external_links:
+            - gateway-postgresql:postgresql
+            - gateway-elasticsearch:elasticsearch
+            - jhipster-registry:registry
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://registry:8761/eureka/
+            - SPRING_CLOUD_CONFIG_URI=http://registry:8761/config
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/gateway
+            - SPRING_DATA_CASSANDRA_CONTACTPOINTS=cassandra
+            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=elasticsearch:9300
+        ports:
+            - 8080:8080
+    gateway-postgresql:
+        container_name: gateway-postgresql
+        image: postgres:9.5.1
+        environment:
+            - POSTGRES_USER=gateway
+            - POSTGRES_PASSWORD=
+    gateway-elasticsearch:
+        container_name: gateway-elasticsearch
+        image: elasticsearch:1.7.5
+    
+    msapp1-app:
+        image: msapp1
+        external_links:
+            - msapp1-mongodb:mongodb
+            - jhipster-registry:registry
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://registry:8761/eureka/
+            - SPRING_CLOUD_CONFIG_URI=http://registry:8761/config
+            - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=msapp1
+    msapp1-mongodb:
+        container_name: msapp1-mongodb
+        image: mongo:3.2.3
+    
+    msapp2-app:
+        image: msapp2
+        external_links:
+            - msapp2-cassandra:cassandra
+            - jhipster-registry:registry
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://registry:8761/eureka/
+            - SPRING_CLOUD_CONFIG_URI=http://registry:8761/config
+            - SPRING_DATA_CASSANDRA_CONTACTPOINTS=cassandra
+    msapp2-cassandra:
+        container_name: msapp2-cassandra
+        build:
+            context: .
+            dockerfile: cassandra/Cassandra.Dockerfile
+    
+    msapp3-app:
+        image: msapp3
+        external_links:
+            - msapp3-mysql:mysql
+            - msapp3-elasticsearch:elasticsearch
+            - jhipster-registry:registry
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://registry:8761/eureka/
+            - SPRING_CLOUD_CONFIG_URI=http://registry:8761/config
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/msapp3?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false
+            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=elasticsearch:9300
+    msapp3-mysql:
+        container_name: msapp3-mysql
+        image: mysql:5.7.11
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=msapp3
+        command: mysqld --lower_case_table_names=1
+    msapp3-elasticsearch:
+        container_name: msapp3-elasticsearch
+        image: elasticsearch:1.7.5
+    
+    jhipster-registry:
+        extends:
+            file: jhipster-registry.yml
+            service: jhipster-registry
+    elk-elasticsearch:
+        extends:
+            file: elk.yml
+            service: elk-elasticsearch
+    elk-logstash:
+        extends:
+          file: elk.yml
+          service: elk-logstash
+    jhipster-console:
+        extends:
+            file: elk.yml
+            service: jhipster-console

@@ -1,0 +1,23 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "jobId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "jobName",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160322111205",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "entityTableName": "Job1"
+}

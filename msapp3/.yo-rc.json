@@ -1,0 +1,34 @@
+{
+  "generator-jhipster": {
+    "jhipsterVersion": "2.27.0",
+    "baseName": "msapp3",
+    "packageName": "com.mycompany.myapp",
+    "packageFolder": "com/mycompany/myapp",
+    "serverPort": "8083",
+    "authenticationType": "jwt",
+    "hibernateCache": "hazelcast",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "buildTool": "gradle",
+    "jwtSecretKey": "906341c15708463455047eb86ed3cdb2a642b02f",
+    "enableTranslation": true,
+    "applicationType": "microservice",
+    "testFrameworks": [
+      "gatling",
+      "cucumber"
+    ],
+    "skipClient": true,
+    "skipUserManagement": true,
+    "nativeLanguage": "fr",
+    "languages": [
+      "fr",
+      "ca",
+      "hi",
+      "it",
+      "pl",
+      "ta"
+    ]
+  }
+}

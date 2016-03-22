@@ -1,0 +1,12 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [
+      "gateway",
+      "msapp1",
+      "msapp2",
+      "msapp3"
+    ],
+    "useElk": true,
+    "jwtSecretKey": "8896088c5b9379199553675eec3a94001375c83e"
+  }
+}

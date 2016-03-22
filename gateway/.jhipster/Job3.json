@@ -1,0 +1,24 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "jobId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "jobName",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160322111229",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "entityTableName": "Job3",
+  "microserviceName": "msapp3"
+}
